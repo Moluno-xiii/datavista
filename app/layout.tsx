@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter, Quantico } from "next/font/google";
 import "./globals.css";
+import Footer from "./_components/Footer";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -9,6 +11,19 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const quantico = Quantico({
+  display: "swap",
+  weight: ["400", "700"],
+  variable: "--font-quantico",
   subsets: ["latin"],
 });
 
@@ -25,9 +40,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${quantico.variable} antialiased min-h-dvh min-w-dvw flex flex-col bg-light`}
       >
-        {children}
+        <Toaster />
+        <main className="flex-1 flex font-mono">{children}</main>
+        <Footer />
       </body>
     </html>
   );

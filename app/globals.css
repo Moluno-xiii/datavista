@@ -1,26 +1,31 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-inter: var(--font-inter);
+  --font-quantico: var(--font-quantico);
+  --color-light: #f7f7f7;
+  --color-primary: #314158;
+  --color-darker: #333333;
 }
 
+@layer components {
+  .link-btn {
+    @apply bg-primary hover:bg-primary/60 text-white rounded-lg transition-all duration-200 cursor-pointer hover:scale-105 px-6 py-3;
+  }
+
+  .input {
+    @apply border-primary/50 border focus:outline-primary focus:outline-2 min-w-2xs md:w-md transition-all duration-200 md:focus:w-lg px-5 py-4 rounded-lg placeholder:text-darker/30;
+  }
+}
+
+/* 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+} */
